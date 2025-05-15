@@ -20,6 +20,11 @@ app = FastAPI()
 model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 
 
+@app.get("/")
+def read_root():
+    return {"status": "OK"}
+
+
 class KeywordRequest(BaseModel):
     keywords: List[str]
 
