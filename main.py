@@ -23,3 +23,6 @@ def get_embedding(request: KeywordRequest):
         print("Error in creating embedding message:", e)
         raise HTTPException(status_code=500, detail=str(e))
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
