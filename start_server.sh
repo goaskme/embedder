@@ -1,9 +1,19 @@
 #!/bin/bash
 
-SESSION_NAME="aimatch"
+SESSION_NAME="embedder"
 PYTHON_SCRIPT="$HOME/embedder/main.py"
 PROJECT_DIR="$HOME/embedder"
 VENV_DIR="$PROJECT_DIR/.venv"
+PORT_TO_KILL=8000  # <-- Change this port as per your use case
+
+# Check if port is in use and kill the process
+PORT_PID=$(lsof -ti:$PORT_TO_KILL)
+if [ -n "$PORT_PID" ]; then
+    echo "Port $PORT_TO_KILL is in use by PID(s): $PORT_PID. Killing..."
+    kill -9 $PORT_PID
+else
+    echo "Port $PORT_TO_KILL is free."
+fi
 
 # Check if the screen session already exists
 if ! screen -list | grep -q "$SESSION_NAME"; then
