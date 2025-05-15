@@ -23,7 +23,7 @@ model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 class KeywordRequest(BaseModel):
     keywords: List[str]
 
-@app.post("/embed")
+@app.post("/api/embed")
 def get_embedding(request: KeywordRequest):
     try:
         text = " ".join(request.keywords)
