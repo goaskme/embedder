@@ -13,11 +13,11 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your app code
+# Copy your FastAPI app code
 COPY . .
 
-# Expose the port
-EXPOSE 8083
+# Expose port 5000
+EXPOSE 5000
 
-# Run the FastAPI app with Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8083"]
+# Run the FastAPI app on port 5000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
